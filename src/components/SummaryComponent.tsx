@@ -1,7 +1,15 @@
 import React, { Fragment } from "react";
+import { Summary } from "../models";
 
-function SummaryComponent() {
-  return <Fragment></Fragment>;
+type SummaryComponentProps = {
+  summary: Summary;
+};
+function SummaryComponent({ summary }: SummaryComponentProps) {
+  return (
+    <Fragment>
+      <p>{JSON.stringify(summary)}</p>
+    </Fragment>
+  );
 }
 
 export default SummaryComponent;

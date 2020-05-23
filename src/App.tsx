@@ -2,27 +2,9 @@ import React, { Fragment, useState } from "react";
 import "./App.css";
 import "bulma";
 
-import { Strategy, Fertilizer, newStrategy } from "./models";
+import { Strategy, Fertilizer, newStrategy, calculateSummary } from "./models";
 import StrategyComponent from "./components/StrategyComponent";
-
-function getByIdFromDataArray<T extends Strategy | Fertilizer>(
-  data: T[],
-  id: number
-) {
-  const filteredItem = data.filter((item) => item.id === id)[0];
-  return { ...filteredItem };
-}
-
-function updateDataArray<T extends Strategy | Fertilizer>(
-  data: T[],
-  newItem: T
-): T[] {
-  const newData = data.map((originalItem) => {
-    return originalItem.id === newItem.id ? newItem : originalItem;
-  });
-
-  return [...newData];
-}
+import SummaryComponent from "./components/SummaryComponent";
 
 function App() {
   const [strategies, setStrategies] = useState<Strategy[]>([newStrategy()]);
@@ -54,12 +36,15 @@ function App() {
       <main>
         {strategies.map((strategy) => {
           return (
-            <StrategyComponent
-              key={strategy.id}
-              data={strategy}
-              onRemoveStrategy={() => onRemoveStrategyHandler(strategy)}
-              onChangeStrategy={onChangeStrategyHandler}
-            />
+            <Fragment>
+              <StrategyComponent
+                key={strategy.id}
+                data={strategy}
+                onRemoveStrategy={() => onRemoveStrategyHandler(strategy)}
+                onChangeStrategy={onChangeStrategyHandler}
+              />
+              <SummaryComponent summary={calculateSummary(strategy)} />
+            </Fragment>
           );
         })}
 

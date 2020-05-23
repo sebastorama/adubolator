@@ -77,6 +77,20 @@ function FertilizerComponent({
           data={fertilizer.s}
           onDataChange={(value) => setFertilizer({ ...fertilizer, s: value })}
         />
+        <FertilizerFieldComponent
+          fieldName="kgPerHa"
+          data={fertilizer.s}
+          onDataChange={(value) =>
+            setFertilizer({ ...fertilizer, kgPerHa: value })
+          }
+        />
+        <FertilizerFieldComponent
+          fieldName="pricePerTon"
+          data={fertilizer.s}
+          onDataChange={(value) =>
+            setFertilizer({ ...fertilizer, pricePerTon: value })
+          }
+        />
       </form>
       <button className="delete" onClick={onRemoveFertilizer}>
         Remover Fertilizante

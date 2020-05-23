@@ -44,18 +44,16 @@ function StrategyComponent({
 
   return (
     <Fragment>
-      {strategy.fertilizers.map((fertilizer: Fertilizer) => {
-        return (
-          <Fragment key={fertilizer.id}>
-            <FertilizerComponent
-              data={fertilizer}
-              onChangeFertilizer={onChangeFertilizerHandler}
-              onRemoveFertilizer={() => onRemoveFertilizerHandler(fertilizer)}
-            />
-            <br />
-          </Fragment>
-        );
-      })}
+      {strategy.fertilizers.map((fertilizer: Fertilizer) => (
+        <Fragment key={fertilizer.id}>
+          <FertilizerComponent
+            data={fertilizer}
+            onChangeFertilizer={onChangeFertilizerHandler}
+            onRemoveFertilizer={() => onRemoveFertilizerHandler(fertilizer)}
+          />
+          <br />
+        </Fragment>
+      ))}
       <button type="button" className="button" onClick={onAddFertilizerHandler}>
         Adicionar Fertilizante
       </button>
