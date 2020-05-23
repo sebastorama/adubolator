@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-import { Fertilizer, Strategy } from "../models";
+import { Fertilizer } from "../models";
 
 type FertilizerFieldComponentProps = {
   fieldName: string;
@@ -17,6 +17,7 @@ function FertilizerFieldComponent({
   useEffect(() => {
     onDataChange(insideData);
   }, [insideData]);
+
   return (
     <div className="field fertilizer">
       <label htmlFor={fieldName} className="label is-small">
@@ -40,7 +41,7 @@ function FertilizerFieldComponent({
 type FertilizerComponentProps = {
   data: Fertilizer;
   onChangeFertilizer(fertilizer: Fertilizer): void;
-  onRemoveFertilizer(id: number): void;
+  onRemoveFertilizer(): void;
 };
 function FertilizerComponent({
   data,
@@ -77,10 +78,7 @@ function FertilizerComponent({
           onDataChange={(value) => setFertilizer({ ...fertilizer, s: value })}
         />
       </form>
-      <button
-        className="delete"
-        onClick={() => onRemoveFertilizer(fertilizer.id)}
-      >
+      <button className="delete" onClick={onRemoveFertilizer}>
         Remover Fertilizante
       </button>
     </Fragment>

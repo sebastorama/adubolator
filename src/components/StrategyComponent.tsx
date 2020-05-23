@@ -1,24 +1,46 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import FertilizerComponent from "./FertilizerComponent";
-import { Strategy, Fertilizer } from "../models";
+import { Strategy, Fertilizer, newFertilizer } from "../models";
 
 type StrategyComponentProps = {
   data: Strategy;
-  onRemoveStrategy(id: number): void;
-  onAddFertilizer(strategyId: number): void;
-  onRemoveFertilizer(strategyId: number, fertilizerId: number): void;
-  onChangeFertilizer(strategy: Strategy, fertilizer: Fertilizer): void;
+  onRemoveStrategy(): void;
+  onChangeStrategy(strategy: Strategy): void;
 };
 
 function StrategyComponent({
   data,
   onRemoveStrategy,
-  onAddFertilizer,
-  onChangeFertilizer,
-  onRemoveFertilizer,
+  onChangeStrategy,
 }: StrategyComponentProps) {
   const [strategy, setStrategy] = useState<Strategy>(data);
+
+  useEffect(() => {
+    onChangeStrategy(strategy);
+  }, [strategy]);
+
+  function onAddFertilizerHandler() {
+    const newStrategy = { ...strategy };
+    newStrategy.fertilizers.push(newFertilizer());
+    setStrategy({ ...newStrategy });
+  }
+
+  function onChangeFertilizerHandler(updated: Fertilizer) {
+    const newStrategy = { ...strategy };
+    newStrategy.fertilizers = strategy.fertilizers.map((curr) => {
+      return curr.id === updated.id ? updated : curr;
+    });
+    setStrategy({ ...newStrategy });
+  }
+
+  function onRemoveFertilizerHandler(removed: Fertilizer) {
+    const newStrategy = { ...strategy };
+    newStrategy.fertilizers = strategy.fertilizers.filter((curr) => {
+      return curr.id !== removed.id;
+    });
+    setStrategy({ ...newStrategy });
+  }
 
   return (
     <Fragment>
@@ -27,28 +49,20 @@ function StrategyComponent({
           <Fragment key={fertilizer.id}>
             <FertilizerComponent
               data={fertilizer}
-              onChangeFertilizer={(f: Fertilizer) =>
-                onChangeFertilizer(strategy, f)
-              }
-              onRemoveFertilizer={(fertilizerId) =>
-                onRemoveFertilizer(strategy.id, fertilizerId)
-              }
+              onChangeFertilizer={onChangeFertilizerHandler}
+              onRemoveFertilizer={() => onRemoveFertilizerHandler(fertilizer)}
             />
             <br />
           </Fragment>
         );
       })}
-      <button
-        type="button"
-        className="button"
-        onClick={() => onAddFertilizer(strategy.id)}
-      >
+      <button type="button" className="button" onClick={onAddFertilizerHandler}>
         Adicionar Fertilizante
       </button>
       <button
         type="button"
         className="button is-danger"
-        onClick={() => onRemoveStrategy(strategy.id)}
+        onClick={onRemoveStrategy}
       >
         Remover Manejo
       </button>

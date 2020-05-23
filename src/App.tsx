@@ -2,8 +2,16 @@ import React, { Fragment, useState } from "react";
 import "./App.css";
 import "bulma";
 
-import { Strategy, Fertilizer, newFertilizer, newStrategy } from "./models";
+import { Strategy, Fertilizer, newStrategy } from "./models";
 import StrategyComponent from "./components/StrategyComponent";
+
+function getByIdFromDataArray<T extends Strategy | Fertilizer>(
+  data: T[],
+  id: number
+) {
+  const filteredItem = data.filter((item) => item.id === id)[0];
+  return { ...filteredItem };
+}
 
 function updateDataArray<T extends Strategy | Fertilizer>(
   data: T[],
@@ -12,6 +20,7 @@ function updateDataArray<T extends Strategy | Fertilizer>(
   const newData = data.map((originalItem) => {
     return originalItem.id === newItem.id ? newItem : originalItem;
   });
+
   return [...newData];
 }
 
@@ -23,49 +32,18 @@ function App() {
     setStrategies([...strategies, strategy]);
   }
 
-  function onRemoveStrategyHandler(id: number) {
-    const newStrategies = [...strategies].filter((strategy: Strategy) => {
-      return strategy.id !== id;
+  function onRemoveStrategyHandler(remove: Strategy) {
+    const newStrategies = strategies.filter((curr) => {
+      return curr.id !== remove.id;
     });
-
-    setStrategies(newStrategies);
+    setStrategies([...newStrategies]);
   }
 
-  function onAddFertilizerHandler(strategyId: number) {
-    const modifiedStrategy = strategies.filter(
-      (strategy) => strategy.id === strategyId
-    )[0];
-    modifiedStrategy.fertilizers.push(newFertilizer());
-
-    setStrategies([...updateDataArray(strategies, modifiedStrategy)]);
-  }
-
-  function onRemoveFertilizerHandler(strategyId: number, fertilizerId: number) {
-    const modifiedStrategy = strategies.filter(
-      (strategy) => strategy.id === strategyId
-    )[0];
-
-    modifiedStrategy.fertilizers = modifiedStrategy.fertilizers.filter(
-      (fertilizer) => fertilizer.id !== fertilizerId
-    );
-
-    setStrategies([...updateDataArray(strategies, modifiedStrategy)]);
-  }
-
-  function onChangeFertilizerHandler(
-    strategy: Strategy,
-    fertilizer: Fertilizer
-  ) {
-    const modifiedStrategy = strategies.filter(
-      (item) => item.id === strategy.id
-    )[0];
-
-    modifiedStrategy.fertilizers = updateDataArray(
-      modifiedStrategy.fertilizers,
-      fertilizer
-    );
-
-    setStrategies([...updateDataArray(strategies, modifiedStrategy)]);
+  function onChangeStrategyHandler(change: Strategy) {
+    const newStrategies = strategies.map((curr) => {
+      return curr.id === change.id ? change : curr;
+    });
+    setStrategies([...newStrategies]);
   }
 
   return (
@@ -79,10 +57,8 @@ function App() {
             <StrategyComponent
               key={strategy.id}
               data={strategy}
-              onRemoveStrategy={onRemoveStrategyHandler}
-              onAddFertilizer={onAddFertilizerHandler}
-              onChangeFertilizer={onChangeFertilizerHandler}
-              onRemoveFertilizer={onRemoveFertilizerHandler}
+              onRemoveStrategy={() => onRemoveStrategyHandler(strategy)}
+              onChangeStrategy={onChangeStrategyHandler}
             />
           );
         })}
