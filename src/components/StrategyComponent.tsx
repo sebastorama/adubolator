@@ -9,11 +9,11 @@ type StrategyComponentProps = {
   onChangeStrategy(strategy: Strategy): void;
 };
 
-function StrategyComponent({
+const StrategyComponent = ({
   data,
   onRemoveStrategy,
   onChangeStrategy,
-}: StrategyComponentProps) {
+}: StrategyComponentProps) => {
   const [strategy, setStrategy] = useState<Strategy>(data);
 
   useEffect(() => {
@@ -67,6 +67,6 @@ function StrategyComponent({
       <br />
     </Fragment>
   );
-}
+};
 
 export default StrategyComponent;

@@ -6,27 +6,27 @@ import { Strategy, Fertilizer, newStrategy, calculateSummary } from "./models";
 import StrategyComponent from "./components/StrategyComponent";
 import SummaryComponent from "./components/SummaryComponent";
 
-function App() {
+const App = () => {
   const [strategies, setStrategies] = useState<Strategy[]>([newStrategy()]);
 
-  function onAddStrategyHandler() {
+  const onAddStrategyHandler = () => {
     const strategy = newStrategy();
     setStrategies([...strategies, strategy]);
-  }
+  };
 
-  function onRemoveStrategyHandler(remove: Strategy) {
+  const onRemoveStrategyHandler = (remove: Strategy) => {
     const newStrategies = strategies.filter((curr) => {
       return curr.id !== remove.id;
     });
     setStrategies([...newStrategies]);
-  }
+  };
 
-  function onChangeStrategyHandler(change: Strategy) {
+  const onChangeStrategyHandler = (change: Strategy) => {
     const newStrategies = strategies.map((curr) => {
       return curr.id === change.id ? change : curr;
     });
     setStrategies([...newStrategies]);
-  }
+  };
 
   return (
     <Fragment>
@@ -61,6 +61,6 @@ function App() {
       <footer>Adubolator {new Date().getFullYear} - No Rights Reserved</footer>
     </Fragment>
   );
-}
+};
 
 export default App;

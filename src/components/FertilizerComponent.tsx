@@ -7,11 +7,11 @@ type FertilizerFieldComponentProps = {
   data: number;
   onDataChange(data: number): void;
 };
-function FertilizerFieldComponent({
+const FertilizerFieldComponent = ({
   fieldName,
   data,
   onDataChange,
-}: FertilizerFieldComponentProps) {
+}: FertilizerFieldComponentProps) => {
   const [insideData, setInsideData] = useState(data);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function FertilizerFieldComponent({
       </div>
     </div>
   );
-}
+};
 
 type FertilizerComponentProps = {
   data: Fertilizer;
