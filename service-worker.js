@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/adubolator/precache-manifest.4436fe088636eb18b914d7a6e8a526c0.js"
+  "/adubolator/precache-manifest.923e8beb414f0b9fd5b737ebd6d01f3c.js"
 );
 
 self.addEventListener('message', (event) => {
