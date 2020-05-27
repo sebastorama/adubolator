@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/adubolator/static/css/main.1eaae375.chunk.css",
+    "main.css": "/adubolator/static/css/main.98700282.chunk.css",
     "main.js": "/adubolator/static/js/main.f29af8e8.chunk.js",
     "main.js.map": "/adubolator/static/js/main.f29af8e8.chunk.js.map",
     "runtime-main.js": "/adubolator/static/js/runtime-main.256fe669.js",
@@ -9,17 +9,17 @@
     "static/js/2.0a938349.chunk.js": "/adubolator/static/js/2.0a938349.chunk.js",
     "static/js/2.0a938349.chunk.js.map": "/adubolator/static/js/2.0a938349.chunk.js.map",
     "index.html": "/adubolator/index.html",
-    "precache-manifest.51ec3d43ea314a1c48e4a105eb38f302.js": "/adubolator/precache-manifest.51ec3d43ea314a1c48e4a105eb38f302.js",
+    "precache-manifest.4436fe088636eb18b914d7a6e8a526c0.js": "/adubolator/precache-manifest.4436fe088636eb18b914d7a6e8a526c0.js",
     "service-worker.js": "/adubolator/service-worker.js",
     "static/css/2.c4f291ab.chunk.css.map": "/adubolator/static/css/2.c4f291ab.chunk.css.map",
-    "static/css/main.1eaae375.chunk.css.map": "/adubolator/static/css/main.1eaae375.chunk.css.map",
+    "static/css/main.98700282.chunk.css.map": "/adubolator/static/css/main.98700282.chunk.css.map",
     "static/js/2.0a938349.chunk.js.LICENSE.txt": "/adubolator/static/js/2.0a938349.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.256fe669.js",
     "static/css/2.c4f291ab.chunk.css",
     "static/js/2.0a938349.chunk.js",
-    "static/css/main.1eaae375.chunk.css",
+    "static/css/main.98700282.chunk.css",
     "static/js/main.f29af8e8.chunk.js"
   ]
 }
