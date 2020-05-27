@@ -80,15 +80,12 @@ export function calculateSummary(strategy: Strategy): Summary {
   };
 
   strategy.fertilizers.forEach((fertilizer) => {
-    summary.n += (fertilizer.n * fertilizer.kgPerHa) / 100;
-    summary.p += (fertilizer.p * fertilizer.kgPerHa) / 100;
-    summary.k += (fertilizer.k * fertilizer.kgPerHa) / 100;
-    summary.s += (fertilizer.s * fertilizer.kgPerHa) / 100;
-    summary.pricePerHa += (fertilizer.pricePerTon * fertilizer.kgPerHa) / 1000;
-  });
-
-  (Object.keys(summary) as Array<keyof typeof summary>).forEach((key) => {
-    summary[key] = NaNtoZero(summary[key]);
+    summary.n += NaNtoZero(fertilizer.n * fertilizer.kgPerHa) / 100;
+    summary.p += NaNtoZero(fertilizer.p * fertilizer.kgPerHa) / 100;
+    summary.k += NaNtoZero(fertilizer.k * fertilizer.kgPerHa) / 100;
+    summary.s += NaNtoZero(fertilizer.s * fertilizer.kgPerHa) / 100;
+    summary.pricePerHa +=
+      NaNtoZero(fertilizer.pricePerTon * fertilizer.kgPerHa) / 1000;
   });
 
   return summary;
