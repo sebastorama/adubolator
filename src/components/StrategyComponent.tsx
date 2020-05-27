@@ -1,7 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 
 import FertilizerComponent from "./FertilizerComponent";
-import { Strategy, Fertilizer, newFertilizer } from "../models";
+import SummaryComponent from "./SummaryComponent";
+import {
+  Strategy,
+  Fertilizer,
+  newFertilizer,
+  calculateSummary,
+} from "../models";
 
 type StrategyComponentProps = {
   data: Strategy;
@@ -17,7 +23,9 @@ const StrategyComponent = ({
   const [strategy, setStrategy] = useState<Strategy>(data);
 
   useEffect(() => {
-    onChangeStrategy(strategy);
+    strategy.fertilizers.length > 0
+      ? onChangeStrategy(strategy)
+      : onRemoveStrategy();
   }, [strategy]);
 
   function onAddFertilizerHandler() {
@@ -43,7 +51,7 @@ const StrategyComponent = ({
   }
 
   return (
-    <Fragment>
+    <div className="strategy">
       {strategy.fertilizers.map((fertilizer: Fertilizer) => (
         <Fragment key={fertilizer.id}>
           <FertilizerComponent
@@ -51,21 +59,30 @@ const StrategyComponent = ({
             onChangeFertilizer={onChangeFertilizerHandler}
             onRemoveFertilizer={() => onRemoveFertilizerHandler(fertilizer)}
           />
-          <br />
         </Fragment>
       ))}
-      <button type="button" className="button" onClick={onAddFertilizerHandler}>
-        Adicionar Fertilizante
-      </button>
-      <button
-        type="button"
-        className="button is-danger"
-        onClick={onRemoveStrategy}
-      >
-        Remover Manejo
-      </button>
-      <br />
-    </Fragment>
+      <div className="summary-result">
+        <SummaryComponent summary={calculateSummary(strategy)} />
+      </div>
+      <div className="strategy-actions">
+        <div className="buttons">
+          <button
+            type="button"
+            className="button is-small"
+            onClick={onAddFertilizerHandler}
+          >
+            Adicionar Fertilizante
+          </button>
+          <button
+            type="button"
+            className="button is-danger is-small"
+            onClick={onRemoveStrategy}
+          >
+            Remover Manejo
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

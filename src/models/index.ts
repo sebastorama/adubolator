@@ -67,6 +67,10 @@ export interface Summary {
 }
 
 export function calculateSummary(strategy: Strategy): Summary {
+  const NaNtoZero = (item: number): number => {
+    return isNaN(item) ? 0 : item;
+  };
+
   const summary: Summary = {
     n: 0,
     p: 0,
@@ -82,5 +86,10 @@ export function calculateSummary(strategy: Strategy): Summary {
     summary.s += (fertilizer.s * fertilizer.kgPerHa) / 100;
     summary.pricePerHa += (fertilizer.pricePerTon * fertilizer.kgPerHa) / 1000;
   });
+
+  (Object.keys(summary) as Array<keyof typeof summary>).forEach((key) => {
+    summary[key] = NaNtoZero(summary[key]);
+  });
+
   return summary;
 }

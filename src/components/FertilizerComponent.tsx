@@ -4,11 +4,13 @@ import { Fertilizer } from "../models";
 
 type FertilizerFieldComponentProps = {
   fieldName: string;
+  fieldLabelText?: string;
   data: number;
   onDataChange(data: number): void;
 };
 const FertilizerFieldComponent = ({
   fieldName,
+  fieldLabelText,
   data,
   onDataChange,
 }: FertilizerFieldComponentProps) => {
@@ -19,13 +21,13 @@ const FertilizerFieldComponent = ({
   }, [insideData]);
 
   return (
-    <div className="field fertilizer">
+    <div className="field fertilizer-field">
       <label htmlFor={fieldName} className="label is-small">
-        {fieldName.toUpperCase()}:
+        {fieldLabelText ? fieldLabelText : fieldName.toUpperCase()}:
       </label>
       <div className="control">
         <input
-          type="text"
+          type="number"
           className="input is-small"
           name={fieldName}
           value={insideData}
@@ -79,6 +81,7 @@ function FertilizerComponent({
         />
         <FertilizerFieldComponent
           fieldName="kgPerHa"
+          fieldLabelText="kg/ha"
           data={fertilizer.s}
           onDataChange={(value) =>
             setFertilizer({ ...fertilizer, kgPerHa: value })
@@ -86,6 +89,7 @@ function FertilizerComponent({
         />
         <FertilizerFieldComponent
           fieldName="pricePerTon"
+          fieldLabelText="$/ton"
           data={fertilizer.s}
           onDataChange={(value) =>
             setFertilizer({ ...fertilizer, pricePerTon: value })

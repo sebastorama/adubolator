@@ -2,9 +2,8 @@ import React, { Fragment, useState } from "react";
 import "./App.css";
 import "bulma";
 
-import { Strategy, Fertilizer, newStrategy, calculateSummary } from "./models";
+import { Strategy, Fertilizer, newStrategy } from "./models";
 import StrategyComponent from "./components/StrategyComponent";
-import SummaryComponent from "./components/SummaryComponent";
 
 const App = () => {
   const [strategies, setStrategies] = useState<Strategy[]>([newStrategy()]);
@@ -43,22 +42,18 @@ const App = () => {
                 onRemoveStrategy={() => onRemoveStrategyHandler(strategy)}
                 onChangeStrategy={onChangeStrategyHandler}
               />
-              <SummaryComponent summary={calculateSummary(strategy)} />
             </Fragment>
           );
         })}
 
         <button
           type="button"
-          className="button is-primary"
+          className="button is-primary add-strategy"
           onClick={onAddStrategyHandler}
         >
           Acrescentar Manejo
         </button>
-
-        <p>{JSON.stringify(strategies)}</p>
       </main>
-      <footer>Adubolator {new Date().getFullYear} - No Rights Reserved</footer>
     </Fragment>
   );
 };
