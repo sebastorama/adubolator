@@ -58,7 +58,7 @@ function FertilizerComponent({
 
   return (
     <Fragment>
-      <form className="fertilizerForm">
+      <form className="fertilizer-form">
         <FertilizerFieldComponent
           fieldName="n"
           data={fertilizer.n}

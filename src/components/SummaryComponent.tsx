@@ -9,13 +9,13 @@ const SummaryComponent = ({ summary }: SummaryComponentProps) => {
   return (
     <Fragment>
       <p>
-        <var>N/ha:</var>
+        <var>N:</var>
         {summary.n}
-        <var>P/ha:</var>
+        <var>P:</var>
         {summary.p}
-        <var>K/ha:</var>
+        <var>K:</var>
         {summary.k}
-        <var>S/ha:</var>
+        <var>S:</var>
         {summary.s}
         <var>custo/ha:</var>
         <NumberFormat
