@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/adubolator/static/css/main.79fa755c.chunk.css",
-    "main.js": "/adubolator/static/js/main.e2936a45.chunk.js",
-    "main.js.map": "/adubolator/static/js/main.e2936a45.chunk.js.map",
+    "main.css": "/adubolator/static/css/main.1eaae375.chunk.css",
+    "main.js": "/adubolator/static/js/main.67628d68.chunk.js",
+    "main.js.map": "/adubolator/static/js/main.67628d68.chunk.js.map",
     "runtime-main.js": "/adubolator/static/js/runtime-main.256fe669.js",
     "runtime-main.js.map": "/adubolator/static/js/runtime-main.256fe669.js.map",
     "static/css/2.c4f291ab.chunk.css": "/adubolator/static/css/2.c4f291ab.chunk.css",
     "static/js/2.0a938349.chunk.js": "/adubolator/static/js/2.0a938349.chunk.js",
     "static/js/2.0a938349.chunk.js.map": "/adubolator/static/js/2.0a938349.chunk.js.map",
     "index.html": "/adubolator/index.html",
-    "precache-manifest.9c4f40f269900e3ae3ab5c54104c2b90.js": "/adubolator/precache-manifest.9c4f40f269900e3ae3ab5c54104c2b90.js",
+    "precache-manifest.59456f353416a7127ef24619a1b5d9a4.js": "/adubolator/precache-manifest.59456f353416a7127ef24619a1b5d9a4.js",
     "service-worker.js": "/adubolator/service-worker.js",
     "static/css/2.c4f291ab.chunk.css.map": "/adubolator/static/css/2.c4f291ab.chunk.css.map",
-    "static/css/main.79fa755c.chunk.css.map": "/adubolator/static/css/main.79fa755c.chunk.css.map",
+    "static/css/main.1eaae375.chunk.css.map": "/adubolator/static/css/main.1eaae375.chunk.css.map",
     "static/js/2.0a938349.chunk.js.LICENSE.txt": "/adubolator/static/js/2.0a938349.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.256fe669.js",
     "static/css/2.c4f291ab.chunk.css",
     "static/js/2.0a938349.chunk.js",
-    "static/css/main.79fa755c.chunk.css",
-    "static/js/main.e2936a45.chunk.js"
+    "static/css/main.1eaae375.chunk.css",
+    "static/js/main.67628d68.chunk.js"
   ]
 }
