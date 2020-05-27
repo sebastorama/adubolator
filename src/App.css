@@ -21,10 +21,27 @@ header h1 {
   color: #fff;
 }
 
+@media (width <= 620px) {
+  main {
+    width: 380px;
+  }
+  .fertilizer-field {
+    width: 60px;
+  }
+}
+
+@media (width > 620px) {
+  main {
+    width: 600px;
+  }
+  .fertilizer-field {
+    width: 85px;
+  }
+}
+
 main {
   background-color: #fff;
   margin: 10px auto;
-  width: 380px;
   padding-bottom: 50px;
 }
 
@@ -83,8 +100,4 @@ main .strategy {
 
 .strategy-actions .buttons {
   float: right;
-}
-
-.fertilizer-field {
-  width: 60px;
 }
