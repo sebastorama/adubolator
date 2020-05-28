@@ -30,29 +30,32 @@ const App = () => {
   return (
     <Fragment>
       <header>
-        <h1>Adubolator</h1>
+        <div className="row align-center">
+          <h1>Adubolator</h1>
+        </div>
       </header>
       <main>
         {strategies.map((strategy) => {
           return (
-            <Fragment>
+            <div className="row">
               <StrategyComponent
                 key={strategy.id}
                 data={strategy}
                 onRemoveStrategy={() => onRemoveStrategyHandler(strategy)}
                 onChangeStrategy={onChangeStrategyHandler}
               />
-            </Fragment>
+            </div>
           );
         })}
-
-        <button
-          type="button"
-          className="button is-primary add-strategy"
-          onClick={onAddStrategyHandler}
-        >
-          Acrescentar Manejo
-        </button>
+        <div className="row">
+          <button
+            type="button"
+            className="button is-primary add-strategy"
+            onClick={onAddStrategyHandler}
+          >
+            Acrescentar Manejo
+          </button>
+        </div>
       </main>
     </Fragment>
   );

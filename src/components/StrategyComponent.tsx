@@ -53,34 +53,33 @@ const StrategyComponent = ({
   return (
     <div className="strategy">
       {strategy.fertilizers.map((fertilizer: Fertilizer) => (
-        <Fragment key={fertilizer.id}>
+        <div className="row">
           <FertilizerComponent
+            key={fertilizer.id}
             data={fertilizer}
             onChangeFertilizer={onChangeFertilizerHandler}
             onRemoveFertilizer={() => onRemoveFertilizerHandler(fertilizer)}
           />
-        </Fragment>
+        </div>
       ))}
-      <div className="summary-result">
+      <div className="row summary-result">
         <SummaryComponent summary={calculateSummary(strategy)} />
       </div>
-      <div className="strategy-actions">
-        <div className="buttons">
-          <button
-            type="button"
-            className="button is-small"
-            onClick={onAddFertilizerHandler}
-          >
-            Adicionar Fertilizante
-          </button>
-          <button
-            type="button"
-            className="button is-danger is-small"
-            onClick={onRemoveStrategy}
-          >
-            Remover Manejo
-          </button>
-        </div>
+      <div className="row strategy-actions">
+        <button
+          type="button"
+          className="button is-small"
+          onClick={onAddFertilizerHandler}
+        >
+          Adicionar Fertilizante
+        </button>
+        <button
+          type="button"
+          className="button is-danger is-small"
+          onClick={onRemoveStrategy}
+        >
+          Remover Manejo
+        </button>
       </div>
     </div>
   );
